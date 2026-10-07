@@ -1,41 +1,33 @@
 #include <stdio.h>
 
-void reverse(char *s, int l) {
-  int start = 0;
-  int end = l - 1;
-
-  if (s[start] == '-')
-    start++;
-
-  while (start < end) {
-    char temp = s[start];
-    s[start] = s[end];
-    s[end] = temp;
-    start++;
-    end--;
+void reverse(char *c, int len) {
+  int i = 0, j = len - 1;
+  while (i < j) {
+    char tmp = c[i];
+    c[i] = c[j];
+    c[j] = tmp;
+    i++;
+    j--;
   }
 }
 
-void itoa(int n, char *c) {
-  int i = 0;
-  if (n < 0) {
-    n = -n;
-    c[i] = '-';
-    i += 1;
-  }
+// void itoa(int n, char *c) {
+//   int i = 0;
+//   int sign = 0;
+//   if (n < 0) {
+//     n = -n;
+//     sign = 1;
+//   }
+//   do {
+//     c[i++] = (n % 10) + '0';
+//   } while ((n /= 10) > 0);
+//   if (sign)
+//     c[i++] = '-';
+//   c[i] = '\0';
+//   reverse(c, i);
+// }
 
-  if (n == 0) {
-    c[i++] = '0';
-  }
-
-  while (n != 0) {
-    int rem = n % 10;
-    c[i++] = rem + '0';
-    n = n / 10;
-  }
-  c[i] = '\0';
-  reverse(c, i);
-}
+void itoa(int n, char *s);
 
 int main() {
   int n;
